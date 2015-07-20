@@ -1,0 +1,33 @@
+doctype html
+html
+    head
+        title Stale Vote
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+        block styles
+
+    body
+        ul.header-links(class="nav nav-tabs")
+            li#main-page-link(class="header-link" role="presentation")
+                a(href="/") Home
+            if loggedIn === false
+                li#login-page-link(class="header-link" role="presentation")
+                    a(href="/login") Login
+                li#register-page-link(class="header-link" role="presentation")
+                    a(href="/register")  Register
+            else
+                li#logout-page-link(class="header-link" role="presentation")
+                    a(href="#") Logout
+                if areYourPolls
+                    li#polls-page-link(class="header-link active" role="presentaion")
+                        a(href="/user/"+username+"/1") Your polls
+                else
+                    li#polls-page-link(class="header-link" role="presentaion")
+                        a(href="/user/" + username + "/1") Your polls
+
+        h3= greeting
+
+        block content
+        script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js' )
+        script(src='/javascripts/global.js')
+        block scripts

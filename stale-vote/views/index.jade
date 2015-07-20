@@ -1,0 +1,14 @@
+extends layout
+
+block scripts
+    script(src='javascripts/index.js')
+
+block content
+    if loggedIn
+        form#newPoll(action="/new-poll" method="post")
+            p What would you like to ask?
+            input#pollQuestion(type="text")
+            button#pollSubmit(type="submit") Make This Poll
+    else
+        h4 Log in to make a new poll
+

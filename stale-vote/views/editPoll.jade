@@ -1,0 +1,15 @@
+extends layout
+block scripts
+    script(src="/javascripts/editPoll.js")
+block content
+    div#pollID(class="hidden")= poll._id
+    h2= poll.question
+    ul#choicesList
+        each choice, i in poll.choices
+            div(class="input-group")
+                input(type="text",class="form-control choice", value=choice)
+                span.input-group-btn
+                    button(class="btn btn-danger deleteChoice" type="button") X
+    button#addChoice Add choice
+    button#savePoll Save poll
+    button#submitPoll Submit poll

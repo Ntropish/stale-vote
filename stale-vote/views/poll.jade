@@ -1,0 +1,10 @@
+extends layout
+block scripts
+    script(src="/javascripts/poll.js")
+block content
+    if currentChoice
+        div#currentChoice(class="hidden")= currentChoice
+    h2= poll.question
+    div(class="btn-group-vertical" role="group")
+        each choice, i in poll.choices
+            button(value=i + 1, type="button", data-votes=poll.scores[i], class="btn btn-default vote")= choice
