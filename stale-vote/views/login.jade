@@ -1,0 +1,10 @@
+
+extends layout
+block scripts
+    script(src='javascripts/login.js')
+
+block content
+    form#inputForm
+        input#name(type="text", placeholder="Name")
+        input#password(type="password", placeholder="Password")
+        button#loginUser(type="submit") Login

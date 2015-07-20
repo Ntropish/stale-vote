@@ -1,0 +1,23 @@
+extends layout
+block scripts
+    script(src='/javascripts/user.js')
+
+block content
+    if user === username
+        h2 Your polls
+    else
+        h2 Polls of
+            =' '+username
+    p total polls:
+        =totalPolls
+    div#polls
+        ul#pollList
+            each poll, i in polls
+                li(value=i)
+                    a(href="/poll/"+poll.id)= poll.question
+                    =' '
+                    if user === username
+                        if poll.isLive !== true
+                            a(href="/edit-poll/"+poll.id, class="edit-link") edit
+                            =' '
+                        a(href="#", data-poll-id=poll.id, class="delete-link") delete
