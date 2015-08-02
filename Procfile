@@ -1,1 +1,1 @@
-web: ./www.js
+web: node ./www.js
