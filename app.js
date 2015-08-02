@@ -43,7 +43,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MONGOOSE TIME =============================================
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect(process.env.MONGOLAB_URI);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
@@ -153,22 +153,12 @@ passport.use(new LocalStrategy(
 
 passport.serializeUser(function (user, done) {
     'use strict';
-    console.log('SERIAL TIME');
     done(null, user);
 });
 
 passport.deserializeUser(function (user, done) {
     'use strict';
     done(null, user);
-    /*
-     User.findOne({username: username}, function (err, user){
-     if (err) {
-     return done(err);
-     }
-     done(null, user);
-     });
-     */
-
 });
 
 function ensureAuthenticated(req, res, next) {
